@@ -48,5 +48,26 @@
                             .attr("y2", 400)
                             .attr("stroke-width", 3)
                             .attr("stroke", "brown");
+
+
+    //The data for our line
+    var lineData = [ { "x": 1,   "y": 5},  { "x": 20,  "y": 20},
+                     { "x": 40,  "y": 10}, { "x": 60,  "y": 40},
+                     { "x": 80,  "y": 5},  { "x": 100, "y": 60}];
+
+    //This is the accessor function we talked about above
+    var lineFunction = d3.svg.line()
+                             .x(function(d) { return d.x; })
+                             .y(function(d) { return d.y; })
+//                             .interpolate("linear");
+                             .interpolate("basis");
+
+    //The line SVG Path we draw
+    var lineGraph = svgContainer.append("path")
+                                .attr("d", lineFunction(lineData))
+                                .attr("stroke", "blue")
+                                .attr("stroke-width", 3)
+                                .attr("fill", "none");
+
 </script>
 </html>
